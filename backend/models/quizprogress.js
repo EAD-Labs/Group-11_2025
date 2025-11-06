@@ -1,13 +1,18 @@
 import mongoose from "mongoose";
 
-const quizSchema = new mongoose.Schema({
-  transcriptId: {
+const quizProgressSchema = new mongoose.Schema({
+  user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Transcript",
+    ref: "User",
     required: true,
   },
   videoId: {
     type: String,
+    required: true,
+  },
+  quiz: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Quiz",
     required: true,
   },
   questions: [
@@ -42,16 +47,28 @@ const quizSchema = new mongoose.Schema({
       ],
     },
   ],
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
-  },
+  answered: [
+    {
+      questionId: {
+        type: String,
+        required: true,
+      },
+      answerId: {
+        type: String,
+      },
+      remark: {
+        type: String,
+        enum: ["answered", "skipped", "saved", "presented"],
+        required: true,
+      },
+      isCorrect: {
+        type: Boolean,
+        required: true,
+      },
+    },
+  ],
 });
 
-const Quiz = mongoose.model("Quiz", quizSchema);
+const QuizProgress = mongoose.model("QuizProgress", quizProgressSchema);
 
-export default Quiz;
+export default QuizProgress;

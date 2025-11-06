@@ -9,7 +9,12 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 import cookieParser from "cookie-parser";
 dotenv.config();
-import { transcriptRoute, authRoute } from "./routes/index.js";
+import {
+  transcriptRoute,
+  authRoute,
+  quizRoute,
+  quizSessionRoute,
+} from "./routes/index.js";
 import { apiError, corsconnection } from "./utils/index.js";
 import { User } from "./models/index.js";
 
@@ -32,7 +37,7 @@ main()
   });
 
 const store = MongoStore.create({
-  mongoUrl: mongoUrl,
+  client: mongoose.connection.getClient(),
   collectionName: "sessions",
   crypto: {
     secret: process.env.SESSION_SECRET_KEY,
@@ -60,12 +65,14 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.use(
   new GoogleStrategy(
     {
-      clientID: process.env.EXTENTIONCLIENT_ID,
+      clientID: process.env.WEBCLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:4567/auth/google/callback",
+      callbackURL: `${process.env.BACKEND_URL}/auth/google/callback`,
+      proxy: true,
     },
     async function (accessToken, refreshToken, profile, done) {
       try {
+        console.log(profile);
         if (!profile.id) {
           const error = new apiError("No profile found", 401);
           return done(error);
@@ -75,7 +82,7 @@ passport.use(
           const newUser = new User({
             googleId: profile.id,
             email: profile.emails[0].value,
-            username: profile.displayName,
+            name: profile.displayName,
             isVerified: true,
             provider: "google",
           });
@@ -85,7 +92,8 @@ passport.use(
           return done(null, user);
         }
       } catch (err) {
-        const error = new apiError("Authentication failed", 401);
+        console.log(err);
+        const error = new apiError("Something went wrong", 401);
         return done(error);
       }
     }
@@ -111,6 +119,8 @@ app.get("/", (req, res) => {
 
 app.use("/transcript", transcriptRoute);
 app.use("/auth", authRoute);
+app.use("/quiz", quizRoute);
+app.use("/quizsession", quizSessionRoute);
 //404 page
 app.use((req, res, next) => {
   const route = req.originalUrl;
@@ -122,7 +132,7 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   const { status = 500, message = "Something happened went wrong" } = err;
   console.log(err);
-  res.status(status).json({ message });
+  res.status(status).json({ message, success: false });
 });
 
 const PORT = process.env.PORT || 3000;
