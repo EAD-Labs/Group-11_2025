@@ -1,0 +1,95 @@
+/* ===========================
+   GoQualify design tokens
+   (duplicated here so the content-script
+   can inject the same colors)
+   =========================== */
+
+:root {
+    --goqualify-primary: 210 100% 56%;
+    --goqualify-primary-foreground: 0 0% 100%;
+    --goqualify-primary-hover: 210 100% 46%;
+    --goqualify-secondary: 210 100% 96%;
+    --goqualify-secondary-foreground: 210 100% 56%;
+    --goqualify-tertiary: 210 100% 98%;
+    --goqualify-tertiary-foreground: 210 100% 56%;
+    --goqualify-light: 0 0% 98%;
+    --goqualify-light-foreground: 240 15% 25%;
+    --goqualify-accent: 210 100% 56%;
+    --goqualify-accent-foreground: 0 0% 100%;
+    --goqualify-background: 210 100% 96%;
+    --goqualify-foreground: 240 15% 25%;
+    --goqualify-card: 0 0% 100%;
+    --goqualify-card-foreground: 240 15% 25%;
+    --goqualify-popover: 0 0% 100%;
+    --goqualify-popover-foreground: 240 15% 25%;
+    --goqualify-muted: 210 100% 98%;
+    --goqualify-muted-foreground: 240 8% 50%;
+    --goqualify-destructive: 0 84% 60%;
+    --goqualify-destructive-foreground: 0 0% 100%;
+    --goqualify-success: 142 65% 45%;
+    --goqualify-warning: 38 92% 50%;
+    --goqualify-border: 240 6% 90%;
+    --goqualify-input: 240 6% 90%;
+    --goqualify-ring: 210 100% 56%;
+    --goqualify-radius: .75rem;
+    --goqualify-gradient-hero: linear-gradient(135deg, hsl(210 100% 97%) 0%, hsl(210 100% 94%) 100%);
+    --goqualify-gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 100% 98%) 100%);
+    --goqualify-gradient-subtle: linear-gradient(180deg, hsl(210 100% 97%) 0%, hsl(210 100% 94%) 100%);
+    --goqualify-shadow-sm: 0 1px 2px 0 hsl(240 15% 25% / .05);
+    --goqualify-shadow-md: 0 4px 12px -2px hsl(240 15% 25% / .08);
+    --goqualify-shadow-lg: 0 20px 25px -5px hsl(240 15% 25% / .1);
+    --goqualify-shadow-hero: 0 32px 64px -12px hsl(210 100% 56% / .2);
+    --goqualify-transition-smooth: all .3s cubic-bezier(.4, 0, .2, 1);
+    --goqualify-transition-bounce: all .5s cubic-bezier(.175, .885, .32, 1.275);
+    --goqualify-sidebar-background: 0 0% 98%;
+    --goqualify-sidebar-foreground: 240 5.3% 26.1%;
+    --goqualify-sidebar-primary: 240 5.9% 10%;
+    --goqualify-sidebar-primary-foreground: 0 0% 98%;
+    --goqualify-sidebar-accent: 240 4.8% 95.9%;
+    --goqualify-sidebar-accent-foreground: 240 5.9% 10%;
+    --goqualify-sidebar-border: 220 13% 91%;
+    --goqualify-sidebar-ring: 217.2 91.2% 59.8%;
+}
+
+/* Utility classes */
+.goqualify-bg-primary            { background-color: hsl(var(--goqualify-primary)); }
+.goqualify-bg-primary-hover      { background-color: hsl(var(--goqualify-primary-hover)); }
+.goqualify-bg-secondary          { background-color: hsl(var(--goqualify-secondary)); }
+.goqualify-bg-tertiary           { background-color: hsl(var(--goqualify-tertiary)); }
+.goqualify-bg-light              { background-color: hsl(var(--goqualify-light)); }
+.goqualify-bg-accent             { background-color: hsl(var(--goqualify-accent)); }
+.goqualify-bg-background         { background-color: hsl(var(--goqualify-background)); }
+.goqualify-bg-card               { background-color: hsl(var(--goqualify-card)); }
+.goqualify-bg-popover            { background-color: hsl(var(--goqualify-popover)); }
+.goqualify-bg-muted              { background-color: hsl(var(--goqualify-muted)); }
+.goqualify-bg-destructive        { background-color: hsl(var(--goqualify-destructive)); }
+.goqualify-bg-success            { background-color: hsl(var(--goqualify-success)); }
+.goqualify-bg-warning            { background-color: hsl(var(--goqualify-warning)); }
+
+.goqualify-text-primary                  { color: hsl(var(--goqualify-primary)); }
+.goqualify-text-primary-foreground       { color: hsl(var(--goqualify-primary-foreground)); }
+.goqualify-text-secondary-foreground     { color: hsl(var(--goqualify-secondary-foreground)); }
+.goqualify-text-tertiary-foreground      { color: hsl(var(--goqualify-tertiary-foreground)); }
+.goqualify-text-light-foreground         { color: hsl(var(--goqualify-light-foreground)); }
+.goqualify-text-accent-foreground        { color: hsl(var(--goqualify-accent-foreground)); }
+.goqualify-text-foreground               { color: hsl(var(--goqualify-foreground)); }
+.goqualify-text-card-foreground          { color: hsl(var(--goqualify-card-foreground)); }
+.goqualify-text-popover-foreground       { color: hsl(var(--goqualify-popover-foreground)); }
+.goqualify-text-muted-foreground         { color: hsl(var(--goqualify-muted-foreground)); }
+.goqualify-text-destructive-foreground   { color: hsl(var(--goqualify-destructive-foreground)); }
+
+.goqualify-border-border { border-color: hsl(var(--goqualify-border)); }
+.goqualify-border-input  { border-color: hsl(var(--goqualify-input)); }
+.goqualify-border-ring   { border-color: hsl(var(--goqualify-ring)); }
+
+.goqualify-shadow-sm   { box-shadow: var(--goqualify-shadow-sm); }
+.goqualify-shadow-md   { box-shadow: var(--goqualify-shadow-md); }
+.goqualify-shadow-lg   { box-shadow: var(--goqualify-shadow-lg); }
+.goqualify-shadow-hero { box-shadow: var(--goqualify-shadow-hero); }
+
+.goqualify-gradient-hero    { background: var(--goqualify-gradient-hero); }
+.goqualify-gradient-card    { background: var(--goqualify-gradient-card); }
+.goqualify-gradient-subtle  { background: var(--goqualify-gradient-subtle); }
+
+.goqualify-transition-smooth { transition: var(--goqualify-transition-smooth); }
+.goqualify-transition-bounce { transition: var(--goqualify-transition-bounce); }

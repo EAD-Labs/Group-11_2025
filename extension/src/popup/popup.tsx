@@ -1,15 +1,19 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './popup.css'
+import React from "react";
+import { createRoot } from "react-dom/client";
+import "./popup.css";
+import LinkExtractor from "./src/linkextractor/linkextractor";
+import Transcript from "./src/transcript/Transcript";
+import Login from "./src/components/login";
 
 const App: React.FC<{}> = () => {
   return (
-    <div>
-      <img src="icon.png" />
+    <div className="popup_body">
+      <Login />
     </div>
-  )
-}
+  );
+};
 
-const root = document.createElement('div')
-document.body.appendChild(root)
-ReactDOM.render(<App />, root)
+const rootElement = document.createElement("div");
+document.body.appendChild(rootElement);
+const root = createRoot(rootElement);
+root.render(<App />);

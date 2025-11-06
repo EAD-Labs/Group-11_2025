@@ -1,0 +1,113 @@
+.loading_container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.loading_content {
+  background: hsla(var(--goqualify-card) / 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: var(--goqualify-shadow-md);
+  border: 1px solid hsl(var(--goqualify-border) / 0.2);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 140px;
+  animation: slideIn 0.3s ease-out;
+}
+
+.loading_spinner {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.spinner_ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  border-top: 2px solid hsl(var(--goqualify-primary));
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+
+.spinner_ring:nth-child(2) {
+  width: 80%;
+  height: 80%;
+  top: 10%;
+  left: 10%;
+  border-top-color: hsl(var(--goqualify-primary) / 0.8);
+  animation-duration: 1s;
+  animation-direction: reverse;
+}
+
+.spinner_ring:nth-child(3) {
+  width: 60%;
+  height: 60%;
+  top: 20%;
+  left: 20%;
+  border-top-color: hsl(var(--goqualify-primary) / 0.6);
+  animation-duration: 0.8s;
+}
+
+.loading_text {
+  color: hsl(var(--goqualify-foreground));
+      font-size: 0.875rem;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  white-space: nowrap;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .loading_container {
+    top: 10px;
+    right: 10px;
+  }
+  
+  .loading_content {
+    padding: 12px 16px;
+    min-width: 120px;
+  }
+  
+  .loading_text {
+    font-size: 0.8125rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .loading_content {
+    background: hsla(var(--goqualify-sidebar-primary) / 0.95);
+    border-color: hsl(var(--goqualify-sidebar-border) / 0.3);
+  }
+  
+  .loading_text {
+    color: hsl(var(--goqualify-light));
+  }
+}

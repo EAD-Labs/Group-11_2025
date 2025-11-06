@@ -1,8 +1,9 @@
 {
-  "name": "React Extension",
-  "description": "Chrome Extension in React!",
+  "name": "Goqualify",
+  "description": "Goqualify",
   "version": "1.0.0",
   "manifest_version": 3,
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvpeIYCbckFOUrMgIstno4pBufDX8+pkZ8HytAk6DfNiG2uS/uS8WaOn3sgGu/I+0CyTR4tD3HuQ/f1FBe3iuOli/1eQesVxYdX6/c0cojAr0Jk77nGjUCiZTD/J0ZBcNbxxSdHi3RjDISkIM92eMAhGcd7ac30hmxeyqBCbqcVhtLeGRJx24g9pUNY5BUr8UFrYRsWrxS+rXZzDzbsOE43aA0Aa5GU9CrRil4si4/Ga/io0rZ/RWPGDy/sDmIm8uRoAUsVDV8Hg+htFUDgfhsmUdqRrAvy77CeyDUzbRtzZIRZiEaK8JeMEJQPGVscRK/InCRfh9vJep8rT8EtVQHQIDAQAB",
   "icons": {
     "16": "icon.png",
     "48": "icon.png",
@@ -10,18 +11,28 @@
   },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "React Extension",
+    "default_title": "Goqualify",
     "default_icon": "icon.png"
   },
-  "permissions": ["storage"],
+  "permissions": ["storage", "tabs", "activeTab","identity","scripting","cookies","notifications"],
+ "host_permissions": [
+    "https://www.youtube.com/*",
+    "http://localhost:4567/*",
+    "https://localhost:4567/*",
+    "http://localhost:3232/*",
+    "https://localhost:3232/*"
+  ],
   "options_page": "options.html",
   "background": {
     "service_worker": "background.js"
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["https://www.youtube.com/*"],
       "js": ["contentScript.js"]
     }
-  ]
+  ],
+  "externally_connectable": {
+    "matches": ["http://localhost:3232/*"]
+  }
 }
