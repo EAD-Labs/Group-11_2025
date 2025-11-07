@@ -1,0 +1,223 @@
+/* Feedback Page Styles */
+.feedback-container {
+  min-height: 100vh;
+  background: var(--gradient-subtle);
+}
+
+.feedback-form {
+  background: var(--gradient-card);
+  border: 1px solid hsl(var(--border));
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition-smooth);
+}
+
+.feedback-form:hover {
+  box-shadow: var(--shadow-hero);
+}
+
+.feedback-input {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--input));
+  transition: var(--transition-smooth);
+}
+
+.feedback-input:focus {
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+  outline: none;
+}
+
+.feedback-textarea {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--input));
+  transition: var(--transition-smooth);
+  resize: none;
+}
+
+.feedback-textarea:focus {
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+  outline: none;
+}
+
+.feedback-select {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--input));
+  transition: var(--transition-smooth);
+}
+
+.feedback-select:focus {
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+  outline: none;
+}
+
+.feedback-button {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border: none;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.feedback-button:hover:not(:disabled) {
+  background: hsl(var(--primary-hover));
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.feedback-button:disabled {
+  background: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.feedback-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Rating Stars */
+.rating-star {
+  transition: var(--transition-smooth);
+  cursor: pointer;
+}
+
+.rating-star:hover {
+  transform: scale(1.1);
+}
+
+.rating-star.filled {
+  color: hsl(var(--warning));
+}
+
+.rating-star.empty {
+  color: hsl(var(--muted-foreground));
+}
+
+.rating-star.empty:hover {
+  color: hsl(var(--warning) / 0.7);
+}
+
+/* Status Messages */
+.feedback-success {
+  background: hsl(var(--success) / 0.1);
+  border: 1px solid hsl(var(--success) / 0.2);
+  color: hsl(var(--success));
+}
+
+.feedback-error {
+  background: hsl(var(--destructive) / 0.1);
+  border: 1px solid hsl(var(--destructive) / 0.2);
+  color: hsl(var(--destructive));
+}
+
+/* Loading Animation */
+.feedback-loading {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Form Validation */
+.feedback-input:invalid {
+  border-color: hsl(var(--destructive));
+}
+
+.feedback-input:valid {
+  border-color: hsl(var(--success));
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .feedback-container {
+    padding: 1rem;
+  }
+  
+  .feedback-form {
+    padding: 1.5rem;
+  }
+  
+  .feedback-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Accessibility */
+.feedback-input:focus-visible,
+.feedback-textarea:focus-visible,
+.feedback-select:focus-visible,
+.feedback-button:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Custom Checkbox */
+.feedback-checkbox {
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid hsl(var(--input));
+  border-radius: 0.25rem;
+  background: hsl(var(--card));
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.feedback-checkbox:checked {
+  background: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+}
+
+.feedback-checkbox:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: hsl(var(--primary-foreground));
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.feedback-checkbox:focus {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Card Hover Effects */
+.feedback-info-card {
+  transition: var(--transition-smooth);
+}
+
+.feedback-info-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Character Counter */
+.feedback-char-counter {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  text-align: right;
+  margin-top: 0.25rem;
+}
+
+.feedback-char-counter.warning {
+  color: hsl(var(--warning));
+}
+
+.feedback-char-counter.error {
+  color: hsl(var(--destructive));
+}

@@ -1,0 +1,127 @@
+.thankyou-container {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+}
+
+.thankyou-card {
+  background: hsl(var(--card));
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 3rem;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.success-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: hsl(var(--success));
+  color: hsl(var(--success-foreground));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin: 0 auto 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.thankyou-header {
+  margin-bottom: 2rem;
+}
+
+.thankyou-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.thankyou-header p {
+  color: hsl(var(--muted-foreground));
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.thankyou-content {
+  margin-bottom: 2rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.6;
+}
+
+.thankyou-content p {
+  margin-bottom: 1rem;
+}
+
+.thankyou-content p:last-child {
+  margin-bottom: 0;
+}
+
+.thankyou-actions {
+  margin-top: 2rem;
+}
+
+.start-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  color: hsl(var(--primary-foreground));
+  text-decoration: none;
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-md);
+}
+
+.start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.start-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .thankyou-container {
+    padding: 1rem;
+  }
+
+  .thankyou-card {
+    padding: 2rem;
+  }
+
+  .thankyou-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .success-circle {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+}

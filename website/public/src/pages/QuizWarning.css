@@ -1,0 +1,157 @@
+.quiz-warning-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.quiz-warning-content {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.warning-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.quiz-warning-content h1 {
+  color: #dc2626;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+}
+
+.warning-message {
+  font-size: 1.2rem;
+  color: #374151;
+  margin: 0 0 15px 0;
+  line-height: 1.6;
+}
+
+.warning-subtitle {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0 0 30px 0;
+  font-weight: 500;
+}
+
+.warning-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.return-btn, .continue-btn, .save-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 140px;
+}
+
+
+
+.save-btn {
+  background-color: #10b981;
+  color: white;
+}
+
+.save-btn:hover {
+  background-color: #059669;
+  transform: translateY(-2px);
+}
+
+.return-btn {
+  background-color: #10b981;
+  color: white;
+}
+
+.return-btn:hover {
+  background-color: #059669;
+  transform: translateY(-2px);
+}
+
+.continue-btn {
+  background-color: #dc2626;
+  color: white;
+}
+
+.continue-btn:hover {
+  background-color: #b91c1c;
+  transform: translateY(-2px);
+}
+
+.countdown {
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.countdown p {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .quiz-warning-content {
+    padding: 30px 20px;
+    margin: 10px;
+  }
+  
+  .quiz-warning-content h1 {
+    font-size: 2rem;
+  }
+  
+  .warning-message {
+    font-size: 1.1rem;
+  }
+  
+  .warning-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .return-btn, .continue-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+}
